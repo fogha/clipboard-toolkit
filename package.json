@@ -1,0 +1,28 @@
+{
+  "name": "clipboard-toolkit",
+  "version": "1.0.0",
+  "description": "A toolkit for manipulating text in the toolkit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fogha/clipboard-toolkit.git"
+  },
+  "author": "Armand Collins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fogha/clipboard-toolkit/issues"
+  },
+  "homepage": "https://github.com/fogha/clipboard-toolkit#readme",
+  "bin": {
+    "cliptool": "index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "command": "^0.0.5",
+    "conf": "^11.0.1",
+    "node-global-key-listener": "^0.1.1"
+  }
+}
