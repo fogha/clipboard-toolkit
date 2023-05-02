@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Clipboard Toolkit",
+  "name": "A chrome extension for manipulating clipboard",
+  "version": "0.0.1",
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,6 +18,25 @@
       "type": "image/png",
       "sizes": "512x512"
     }
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Clipboard Toolkit"
+  },
+  "permissions": ["storage", "contextMenus"],
+  "background": {
+    "service_worker": "./static/js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["./static/js/contentScript.js"],
+      "all_frames": false,
+      "run_at": "document_end"
+    }
+  ],
+  "optional_permissions": [
+    "<all_urls>"
   ],
   "start_url": ".",
   "display": "standalone",

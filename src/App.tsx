@@ -17,8 +17,6 @@ function App() {
 
         >
           <Flex shadow="xl" flexDirection="column" padding={4} width={420} height={480} borderRadius={8}>
-            <Text></Text>
-
             <div>
               <TabStructure />
             </div>

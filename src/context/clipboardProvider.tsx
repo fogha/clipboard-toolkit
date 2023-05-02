@@ -4,6 +4,20 @@ type Props = {
   children: ReactNode;
 }
 
+// const initialState = {
+//   tok: ""
+// };
+
+// let reducer = (info, newInfo) => {
+//   if (newInfo === null) {
+//     localStorage.removeItem("info");
+//     return initialState;
+//   }
+//   return { ...info, ...newInfo };
+// };
+
+// const localState = JSON.parse(localStorage.getItem("info"));
+
 const ClipboardContext = createContext({});
 
 export const ClipboardProvider = ({ children }: Props) => {
@@ -17,16 +31,21 @@ export const ClipboardProvider = ({ children }: Props) => {
   });
 
   useEffect(() => {
-    const copiedTextHisotry = window.localStorage.getItem('copiedTextHistory');
-    console.log(copiedTextHisotry)
+    if (localStorage.getItem('copiedTextHistory')) {
+      const copiedTextHistory: any = JSON.parse(localStorage.getItem('copiedTextHistory') || '');
+      console.log(copiedTextHistory)
+      setCopyHistory(copiedTextHistory)
+      console.log(copiedTextHistory)
+    }
+
   }, [copiedText])
 
   const handleCopy = () => {
     navigator.clipboard
       .readText()
       .then((clipText) => {
-        window.localStorage.setItem('copiedTextHistory', JSON.stringify(copyHistory))
-        setCopyHistory((allCopiedtext) => [...allCopiedtext, clipText])
+        localStorage.setItem('copiedTextHistory', JSON.stringify(copyHistory))
+        setCopyHistory((allCopiedtext: any) => [...allCopiedtext, clipText])
         setCopiedText(clipText)
       });
   }
